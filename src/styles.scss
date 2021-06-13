@@ -1,1 +1,136 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+* {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+html,
+body {
+  font-family: "Poppins";
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+$container-max-size: 1000;
+$sizes: 0,5,10,15,20,30,40,50,60,70,80,90,100;
+$grid-column: 12;
+
+@each $size in $sizes {
+  .m-#{$size} {
+    margin: #{$size}px !important;
+  }
+  .ml-#{$size} {
+    margin-left: #{$size}px !important;
+  }
+  .mr-#{$size} {
+    margin-right: #{$size}px !important;
+  }
+  .mt-#{$size} {
+    margin-top: #{$size}px !important;
+  }
+  .mb-#{$size} {
+    margin-bottom: #{$size}px !important;
+  }
+  .mx-#{$size} {
+    margin-left: #{$size}px !important;
+    margin-right: #{$size}px !important;
+  }
+  .my-#{$size} {
+    margin-top: #{$size}px !important;
+    margin-bottom: #{$size}px !important;
+  }
+  .p-#{$size} {
+    padding: #{$size}px !important;
+  }
+  .pl-#{$size} {
+    padding-left: #{$size}px !important;
+  }
+  .pr-#{$size} {
+    padding-right: #{$size}px !important;
+  }
+  .pt-#{$size} {
+    padding-top: #{$size}px !important;
+  }
+  .pb-#{$size} {
+    padding-bottom: #{$size}px !important;
+  }
+  .px-#{$size} {
+    padding-left: #{$size}px !important;
+    padding-right: #{$size}px !important;
+  }
+  .py-#{$size} {
+    padding-top: #{$size}px !important;
+    padding-bottom: #{$size}px !important;
+  }
+}
+@mixin media-query($size: 768px) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin grid-column($size) {
+  width: calc(100%);
+  margin-left: 5px;
+}
+
+$grid-desktop: (
+  columns: $grid-column,
+  gutter: 20px,
+  media: 'screen and (min-width:768px)',
+  direction: ltr
+);
+
+$grid-mobile: (
+  columns: $grid-column,
+  gutter: 5px,
+  media: 'screen and (min-width:560px)',
+  direction: ltr
+);
+
+.container {
+  width: calc(100% - 40px);
+  margin: 0 auto;
+  position: relative;
+  @include media-query {
+    width: 100%;
+    max-width: $container-max-size;
+  }
+}
+
+table {
+  width:75%;
+
+  @include media-query {
+    & {
+      width: 99%;
+    }
+  }
+}
+
+.row {
+  width: 100%;
+}
+
+.column {
+  @include grid-column($grid-column);
+
+  @for $i from 1 through $grid-column {
+    &.column-#{$i} {
+      @include grid-column($i);
+    }
+  }
+}
+
+.open {
+  color: blue;
+}
+
+.closed {
+  color: green;
+}
+
+.progress {
+  color: yellow;
+}
