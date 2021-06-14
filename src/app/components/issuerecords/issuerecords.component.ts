@@ -1,18 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-issuerecords',
   templateUrl: './issuerecords.component.html',
   styleUrls: ['./issuerecords.component.scss']
 })
-export class IssuerecordsComponent implements OnInit {
+export class IssuerecordsComponent {
 
   constructor() { }
 
   @Input() issues:any = [];
-
-  ngOnInit(): void {
-    console.log(this.issues);
-  }
 
 }

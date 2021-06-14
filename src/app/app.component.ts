@@ -14,4 +14,8 @@ export class AppComponent {
     {description:'The heading add is wrongly displayed as Edit.',severity:'minor', status: 'closed'},
     {description:'The heading add is wrongly displayed as Edit.',severity:'minor', status: 'in progress'}
   ];
+
+  addIssueEntry(event: any) {
+    this.issueList.push(event);
+  }
 }
